@@ -1,0 +1,16 @@
+{% extends 'navbar.html' %} {% block content %}
+
+<div class="container">
+  <div class="card">
+    <h3>Profile</h3>
+    <div class="card-body">
+      <p class="card-text"><label>Name: {{request.user}}</label></p>
+      <p class="card-text"><label>DOB: {{request.user.profile.dob}}</label></p>
+      <p class="card-text"><label>Mobile: {{request.user.profile.mobile}}</label></p>
+      <p class="card-text"><label>Email: {{request.user.email}}</label></p>
+
+      <a class="card-link" href="{% url 'edit-profile' %}">update Profile</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

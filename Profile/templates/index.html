@@ -1,0 +1,23 @@
+{% extends 'navbar.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      {% if request.user.is_authenticated %}
+      <p class="card-text"><label>Name: {{request.user}}</label></p>
+      <p class="card-text"><label>Email: {{request.user.email}}</label></p>
+
+      <form method="POST">
+        {% csrf_token %} {% for field in form %}
+
+        <div class="row">{{ field.label }} {{ field}}</div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
+      </form>
+      {% else%}
+      <a class="card-link" href="{% url 'signin' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
